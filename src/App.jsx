@@ -1,41 +1,38 @@
-import './App.css'
-import jennie from'./assets/jennie.jpg';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
+import AboutJennie from "./pages/AboutJennie";
+import FavSongs from "./pages/FavSongs";
 
 function App() {
   return (
-    <div className="container">
-      <header>
-        <h1>My fav artist</h1>
-        <p>artist favoritku</p>
-      </header>
+    <Router>
+      <div className="container">
+        <header>
+          <h1>My Fav Artist</h1>
+          <p>Artist favoritku</p>
+          {/* Navbar */}
+          <nav>
+            <Link to="/">Home</Link> |{" "}
+            <Link to="/about">About Jennie</Link> |{" "}
+            <Link to="/songs">Fav Songs</Link>
+          </nav>
+        </header>
 
-      <main>
-        <section className="card">
-          <h2>Jennie blackpink</h2>
-          <img src={jennie} alt="Jennie" className='card-img' />
-          <p>
-            she is pretty, georges<br></br> 
-            and the reason i like her is bcs she never cared about her hatters<br>
-            </br>
-          </p>
-        </section>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutJennie />} />
+            <Route path="/songs" element={<FavSongs />} />
+          </Routes>
+        </main>
 
-        <section className="card">
-          <h2>fav song from jennie</h2>
-          <ul>
-            <li>Like Jennie</li>
-            <li>Solo</li>
-            <li>Mantra</li>
-            <li>Seoul City</li>
-          </ul>
-        </section>
-      </main>
-
-      <footer>
-        <p>© 2025 made with love for Jennie</p>
-      </footer>
-    </div>
-  )
+        <footer>
+          <p>© 2025 made with love for Jennie</p>
+        </footer>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
